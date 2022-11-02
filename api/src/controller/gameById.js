@@ -3,7 +3,6 @@ const {Videogame, Genre} = require ('../db')
 const {API_KEY} = process.env
 
 
-
 const gameById = async (id) => {
     if (!id.includes('-')){
     try {

@@ -2,7 +2,8 @@ const axios = require("axios");
 const express = require("express");
 const { Genre, Videogame } = require("../db");
 const router = express.Router();
-const getAll = require ("../controller/allgames")
+const getAll = require ("../controller/allgames");
+
 
 router.post ('/', async (req, res) =>{
     let { name, description, released, rating, platforms, genre, img } =
@@ -10,7 +11,7 @@ router.post ('/', async (req, res) =>{
     if(!name || !description || !platforms){
         released.status(400).send("Some required information is missing")
     }
-
+    
     const findVideogame = await Videogame.findAll({ where: { name: name } });
     if (findVideogame.length != 0) {
         return res.send("The name already exists");
