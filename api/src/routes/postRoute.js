@@ -5,6 +5,7 @@ const router = express.Router();
 const getAll = require ("../controller/allgames");
 
 
+
 router.post ('/', async (req, res) =>{
     let { name, description, released, rating, platforms, genre, img } =
     req.body;

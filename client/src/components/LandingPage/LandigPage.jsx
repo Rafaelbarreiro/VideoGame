@@ -18,7 +18,7 @@ function LandingPage() {
           <span className={styles.letter}>E</span>
 
           <Link to='/home'>
-        <button type="button" className={styles.buttonIng}> </button>
+        <button type="button" className={styles.buttonIng}> start </button>
       </Link>
       </div>
       
