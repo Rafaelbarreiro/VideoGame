@@ -1,0 +1,22 @@
+.container{
+    background-color: rgba(19, 54, 80, 0.989);
+    background-size: cover;
+    
+}
+.containerImg{
+   height: 500px;
+   width: 60%;
+   background-size: cover;
+   background-position: center
+}
+.platform{
+    background-color: black;
+}
+.platformLetter{
+    color: white;
+}
+.details{
+    margin-bottom: 0;
+    color: red;
+    
+}

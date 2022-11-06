@@ -65,3 +65,8 @@ return (
     </div>
 
 )
+//case filter_by_continents
+//const allcountries = state.allcountries
+//const countriesFilter= action.payload === all ?
+//                   allcountries  : 
+//              allcountriies.filter(e=> e.continent?includes(action.payload))

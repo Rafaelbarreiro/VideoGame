@@ -7,6 +7,8 @@ const getApiAll = async () =>{
     const firstHundred = [];
     for (let i = 1; i <= 5; i++) {
         let api = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
+        
+        
         api.data.results.map(e => {
             firstHundred.push( {
                 id : e.id, 

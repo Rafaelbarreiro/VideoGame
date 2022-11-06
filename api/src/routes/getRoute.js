@@ -12,6 +12,9 @@ if(name){
     const apiData = await axios.get(
         `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
       );
+      if (apiData.data.results.length > 15){
+        apiData.data.results.length = 15
+      }
       if(!apiData.data.count){
         res.status(404).send(` ${name} not found`)
     }else{
@@ -35,12 +38,14 @@ if(name){
 }          
 });
 
-router.get('/:id', async (req, res) => {
+ router.get('/:id', async (req, res) => {
+    console.log('hola')
     let { id } = req.params;
     let videogamesTotal = await gameById(id);
     res.status(200).send(videogamesTotal);
 
 }
-);
+); 
+
 
 module.exports = router;

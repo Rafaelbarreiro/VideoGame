@@ -2,3 +2,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+.bg {
+    background-color: rgba(19, 54, 80, 0.989);
+    background-size: cover;
+    /* height: 100vh;
+    width: 100vw; */
+  }
+.nav{
+    background: rgb(35, 108, 121);
+}

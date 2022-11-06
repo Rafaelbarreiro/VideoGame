@@ -184,8 +184,18 @@ animation-delay: calc(0.1s * var(--i));
     align-items: center;
     flex-direction: column;
     background: #001300;
-    background: url("../../img/LandingPage3.jpg") no-repeat center;
-    background-size: cover;
+    animation: changeColor 5s linear infinite
+    /* background: url("../../img/LandingPage3.jpg") no-repeat center;
+    background-size: cover; */
+}
+
+@keyframes changeColor{
+    0%{
+        filter: hue-rotate(0deg)
+    }
+    100%{
+        filter: hue-rotate(360deg)
+    }
 }
 .h1{
 color: #00ff0a;

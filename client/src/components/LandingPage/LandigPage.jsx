@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styles from './LandingPage.module.css'
-
+import buton from '../../img/startButton.jpg'
 
 
 function LandingPage() {
+
   return (
     <div className={styles.bg}>
       <h2 className = {styles.author}> Created By Rafael Barreiro</h2>
@@ -18,7 +19,7 @@ function LandingPage() {
           <span className={styles.letter}>E</span>
 
           <Link to='/home'>
-        <button type="button" className={styles.buttonIng}> start </button>
+        <button type="button" className={styles.buttonIng}> <img src={buton } alt='' /> </button>
       </Link>
       </div>
       
