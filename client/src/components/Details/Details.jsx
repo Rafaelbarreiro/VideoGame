@@ -27,6 +27,7 @@ export default function Details(props) {
 
 
     const platformDetail = myGame.platforms?.join('  ')
+    const genreDetail = myGame.genres?.join('  ')
 
     return (
         <div className={s.container}>
@@ -48,7 +49,7 @@ export default function Details(props) {
                         </div>
                     </div>
                     <div className={s.details}>
-                            <p>{myGame.genres} </p>
+                            <p>{genreDetail} </p>
                             <p>Rating: {myGame.rating} </p>
                             <p>Launch: {myGame.released} </p>
                         </div>

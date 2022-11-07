@@ -1,0 +1,14 @@
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    
+    padding: 1em;
+    background-color: rgba(19, 54, 80, 0.989);
+    height: 100vh;
+}
+
+.a {
+    white-space: pre;
+    color: black;
+  }
