@@ -2,7 +2,7 @@ const axios = require("axios");
 const express = require("express");
 const router = express.Router();
 const {API_KEY} = process.env
-const getAll = require ("../controller/allgames");
+const {getAll }= require ("../controller/allgames");
 const gameById = require ("../controller/gameById");
 
 router.get ('/', async (req, res) =>{
@@ -39,7 +39,6 @@ if(name){
 });
 
  router.get('/:id', async (req, res) => {
-    console.log('hola')
     let { id } = req.params;
     let videogamesTotal = await gameById(id);
     res.status(200).send(videogamesTotal);

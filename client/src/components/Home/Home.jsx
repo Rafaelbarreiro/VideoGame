@@ -15,7 +15,7 @@ export default function Home() {
 
 const dispatch = useDispatch();
 const allGames = useSelector((state) => state.videogames);  
-const platform = useSelector((state) => state.platforms)
+const platforms = useSelector((state) => state.platforms)
 const genre = useSelector((state) => state.genres) // eslint-disable-next-line
 const [loading, setLoading] = useState(true);// eslint-disable-next-line
 const [order, setOrder] = useState(''); 
@@ -103,8 +103,8 @@ function handleByPlatform(e){
 
                 <select onChange={e => handleByPlatform(e)} className={s.selected} >
                 <option value='All'> ALL PLATFORMS </option>
-                {platform?.map(el => (
-                            <option key={el.id} value={el.name}>{el.name}</option>
+                {platforms?.map(el => (
+                            <option key={el} value={el}>{el}</option>
                         ))
                         }
                 </select>
@@ -120,7 +120,7 @@ function handleByPlatform(e){
         
             <div className={s.cards}>
                 
-            {CurrentGames?.map( e =>{
+            {CurrentGames.length > 0 ? CurrentGames?.map( e =>{
                return (
                 <li key={e.id}>
                <Card name={e.name}
@@ -128,15 +128,13 @@ function handleByPlatform(e){
                      rating = {e.rating}
                      id = {e.id} />
                 </li>
-           );} )}
+           );} ) : <Loading/> }
             </div>
             </div>
             </div>
-            )  : CurrentGames.length > 0 && loading? (
-                <Loading/>
-            ) : (
-                <h1>Not Found</h1>
-            ) }
+            )  
+               : <Loading/>
+              }
             </div>
         </div>
     );

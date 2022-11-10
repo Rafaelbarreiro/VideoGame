@@ -12,7 +12,7 @@ export default function Details(props) {
     const dispatch = useDispatch();
     const myGame = useSelector((state) => state.videogameDetail);
     let gameId = props.match.params.id;
-
+console.log(myGame)
     if(Object.keys(myGame).length > 0 && loading){
         setLoading(false);
     }
@@ -27,7 +27,7 @@ export default function Details(props) {
 
 
     const platformDetail = myGame.platforms?.join('  ')
-    const genreDetail = myGame.genres?.join('  ')
+    const genreDetail = (myGame.genres?.join('  '))
 
     return (
         <div className={s.container}>
@@ -45,7 +45,7 @@ export default function Details(props) {
                         backgroundImage: `url(${myGame.img})`,
                     }} className={s.containerImg}>
                         <div className={s.platform}>
-                            <p className={s.platformLetter} >{platformDetail} </p>
+                            <p className={s.platformLetter} >{platformDetail? platformDetail : "not Found"} </p>
                         </div>
                     </div>
                     <div className={s.details}>

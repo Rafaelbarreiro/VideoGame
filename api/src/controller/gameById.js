@@ -24,19 +24,31 @@ const gameById = async (id) => {
     } catch (e) {
       console.log(e);
     }}else {
-        let gameFound = await Videogame.findByPk(id, {
-            include: [{
-                model: Genre,
-                attributes: ['name'],
-                through : {
-                    attributes: [],
-                }
-            }]
+        let gameFound = await Videogame.findOne( {
+            where:{
+              id:id,
+            },
+            include:{
+              model: Genre,
+              attributes: ["name"]
+            }
         })
-        var find = []
-        find.push(gameFound)
-
-        res.status(200).json(find)
+        console.log(gameFound, 'gameFound')
+        const mapInfoDb = Array.from(gameFound)?.map(e => {
+          return {
+              id: e.id,
+              name: e.name,
+              image: e.image,
+              genres: e.genres?.map((e) => e.name),
+              description: e.description,
+              released: e.released,
+              rating: e.rating,
+              platforms: e.platforms?.map((el) => el),
+              createdInDb: e.createdInDb,
+          };
+      });
+        
+        return (mapInfoDb)
     }
   };
 

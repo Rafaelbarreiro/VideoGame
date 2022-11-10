@@ -7,7 +7,8 @@ import {
   ORDER_BY_RATING,
   ORDER_BY_GENRES,
   GET_PLATFORMS,
-  FILTER_BY_PLATFORM
+  FILTER_BY_PLATFORM,
+  POST_GAME
 } from '../actions/index'
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
     allVideogames: [],
     genres: [],
     platforms: [],
-    videogameDetail: [],
+    videogameDetail: {},
     gamesByName: [],
     loading: false
   };
@@ -23,10 +24,12 @@ const initialState = {
   function rootReducer(state = initialState, action){
     switch(action.type){
       case GET_VIDEOGAMES:
+       
         return{
           ...state,
         allVideogames: action.payload,
         videogames: action.payload,
+        
         };
         
       case GET_GAMEBYNAME:
@@ -112,14 +115,23 @@ const initialState = {
                 platforms: action.payload,
                
             };
+
+
       case FILTER_BY_PLATFORM:
         const allVG = state.allVideogames
+          allVG.map(e => console.log(e.platform))
         const filterByPlatform = action.payload === "All"? allVG : 
-        allVG.filter(e => e.platform.includes(action.payload))
+        allVG.filter(e => e.platform?.includes(action.payload) )
+       
         return {
           ...state,
           videogames: filterByPlatform
         };
+
+        case POST_GAME:
+             return{
+                ...state
+            }
 
         default:
       return state ;

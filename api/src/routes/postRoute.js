@@ -2,7 +2,7 @@ const axios = require("axios");
 const express = require("express");
 const { Genre, Videogame } = require("../db");
 const router = express.Router();
-const getAll = require ("../controller/allgames");
+const {getAll} = require ("../controller/allgames");
 
 
 
@@ -22,20 +22,20 @@ router.post ('/', async (req, res) =>{
     const gameFound = allVideoGame.find(
         (e) => e.name.toLowerCase() === name.toLowerCase())
           if(!gameFound){
-            const newVideogame = await Videogame.create({
+            let newVideogame = await Videogame.create({
                 name,
                 description,
                 released,
                 rating,
                 img,
-                platforms,
+                platforms
             });
-            const genreDb = await Genre.findAll({
+            let genreDb = await Genre.findAll({
                 where: {
                     name : genre
                 },
             });
-            //console.log(genreDb);
+            
             await newVideogame.addGenre(genreDb);
             res.status(200).send("Videogame created successfully")
 

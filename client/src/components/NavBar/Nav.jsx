@@ -15,7 +15,8 @@ export default function NavBar ({setCurrentPage}){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(getVideogames());
-        dispatch(clear());}
+        dispatch(clear());
+        }
     
     
 
@@ -26,6 +27,10 @@ export default function NavBar ({setCurrentPage}){
                 <Link to='/home'>
                       <button onClick ={(e)=> handleSubmit(e)}> RELOAD ALL GAMES </button>
                 </Link>
+
+                <Link to='/createGame'>
+            <button>CREATE NEW VIDEOGAME</button>
+                 </Link>
             
                 <div><SearchBar  setCurrentPage={setCurrentPage} /></div>
             </div>

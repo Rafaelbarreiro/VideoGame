@@ -16,11 +16,10 @@ const router = Router();
 router.use('/videogames', getRoute );
 router.use('/genres', genreRoute);
 router.use('/platforms', platformsRoute);
-router.use('/videogames', postRoute);
+router.use('/videogame', postRoute);
 router.use('/videogames', deleteRoute);
 router.use('/videogames', putRoute);
 
 
-
-
 module.exports = router;
+

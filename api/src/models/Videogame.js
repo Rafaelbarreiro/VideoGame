@@ -20,6 +20,7 @@ module.exports = (sequelize) => {
     //fecha de lanzamiento
     released: {
       type: DataTypes.DATEONLY,
+      allowNull: false,
     },
     rating: {
       //revisar formato de number que trae la API
@@ -31,9 +32,10 @@ module.exports = (sequelize) => {
     },
     platforms: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
     },
+      
   },{
     timestamps: false
   });
 };
+

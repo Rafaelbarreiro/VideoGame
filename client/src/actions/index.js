@@ -8,12 +8,13 @@ export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const ORDER_BY_GENRES = "ORDER_BY_GENRES";
 export const GET_PLATFORMS = 'GET_PLATFORMS';
-export const FILTER_BY_PLATFORM = 'FILTER_BY_PLATFORM'
+export const FILTER_BY_PLATFORM = 'FILTER_BY_PLATFORM';
+export const POST_GAME = 'POST_GAME'
 
 export function getVideogames () {
     return async function (dispatch){
         try {
-            var json = await axios.get ("http://localhost:3001/videogames");
+            var json = await axios.get("http://localhost:3001/videogames");
              return dispatch({
                 type: GET_VIDEOGAMES,
                 payload : json.data
@@ -109,5 +110,16 @@ export function fiteredPlatform(payload){
     return{
         type: FILTER_BY_PLATFORM,
         payload
+    }
+};
+export function postVideogames(payload) {
+    return async function () {
+       try {
+        const createPost = await axios.post(`http://localhost:3001/videogame`, payload);
+        return createPost;
+   
+       } catch (error) {
+        console.log(error.message)
+       }
     }
 }
