@@ -7,6 +7,7 @@ import Pagination from '../Pagination/pagination'
 import Loading from "../Loading/Loading";
 import NavBar from '../NavBar/Nav';
 import s from "./Home.module.css"
+import Error404 from '../Error404';
 //import SideBar from '../SideBar/SideBar';
 
 
@@ -141,10 +142,12 @@ function handleByPlatform(e){
             {CurrentGames.length > 0 ? CurrentGames?.map( e =>{
                return (
                 <li key={e.id} className={s.li}>
+                    {e.error ? <Error404/>:
                <Card name={e.name}
                      img = {e.img}
                      rating = {e.rating}
-                     id = {e.id} />
+                     genres = {e.genres}
+                     id = {e.id} />}
                 </li>
            );} ) : <Loading/> }
             </div>

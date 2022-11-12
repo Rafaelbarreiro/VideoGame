@@ -20,6 +20,7 @@ const gameById = async (id) => {
         img: game.background_image,
         description: game.description_raw,
       };
+      
       return gameDetail;
     } catch (e) {
       console.log(e);
@@ -38,22 +39,19 @@ const gameById = async (id) => {
               },
             }
         })
-        /* console.log(gameFound, 'gameFound')
-         const mapInfoDb = gameFound?.map(e => {
-          return {
-              id: e.id,
-              name: e.name,
-              image: e.image,
-              genres: e.genres?.map((e) => e.name),
-              description: e.description,
-              released: e.released,
-              rating: e.rating,
-              platforms: e.platforms?.map((el) => el),
-              createdInDb: e.createdInDb,
-          };
-      }); 
-        console.log(mapInfoDb, 'mapInfoDb') */
-        return (gameFound)
+        const gameDetail = {
+          id: gameFound.id,
+          name: gameFound.name,
+          released: gameFound.released,
+          rating: gameFound.rating,
+          genres: gameFound.genres.map((e) => e.name),
+          platforms: gameFound.platforms,
+          img: gameFound.img,
+          description: gameFound.description,
+        };
+        console.log(gameDetail)
+       
+        return (gameDetail)
     }
   };
 

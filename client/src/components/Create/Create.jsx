@@ -161,13 +161,13 @@ export default function  VideogameCreate(){
     
 return(
     <div className={s.bg}>
-        <div>
+        <div className={s.container}>
         <Link to= '/home'><button>Home</button></Link>
-        <h2>Create a New Videogame</h2>
+        <h2 className={s.new}>Create a New Videogame</h2>
         <form className={s.form} onSubmit={handleSubmit}>
             <div>
             <div>
-                <label>Name*:</label>
+                <label className={s.label}>Name*:</label>
                 <input className={s.input}
                 onChange={handleChange}
                 type= "text"
@@ -178,7 +178,7 @@ return(
             </div>
 
             <div>
-                <label>Released:</label>
+                <label className={s.label}>Released:</label>
                  <input
                  onChange={handleChange}
                  type="date"
@@ -189,7 +189,7 @@ return(
              </div>
 
              <div>
-                <label>Rating:</label>
+                <label className={s.label}>Rating:</label>
                  <input
                  onChange={handleChange}
                  
@@ -201,7 +201,7 @@ return(
              </div>
 
              <div>
-                <label>Imagen:</label>
+                <label className={s.label}>Imagen:</label>
                  <input
                  onChange={handleChange}
                  type="text"
@@ -211,7 +211,7 @@ return(
                 {error.img && <span className={s.red}>{error.img}</span>}
              </div>
              <div>
-            <p>Description*:</p>
+            <p className={s.label}>Description*:</p>
             <textarea
             onChange={handleChange}
               type="text"
@@ -224,8 +224,7 @@ return(
 
             <div className={s.select}> 
           
-             <h1>Genre:</h1>
-             <br></br>
+            
              {/* <div id="itemForm">
              {genres?.map((e) => {
                 return(
@@ -241,7 +240,7 @@ return(
              
              </div> */}
              <div>
-            <p>Genres</p>
+            <p className={s.label}>Genres</p>
             <select  className={s.thisInput} onChange={(e) => handleSelectGenres(e)}>
               <option value="all">All</option>
               {genres?.map((e) => {
@@ -265,7 +264,7 @@ return(
             })}{" "}
           </div>
              <div>
-            <h1>Platform*:</h1>
+            <h1 className={s.platformText}>Platform*:</h1>
              {plataforma?.map((e) => {
                 return(
                     <label key={e}><input

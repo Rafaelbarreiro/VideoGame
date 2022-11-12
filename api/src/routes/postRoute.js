@@ -30,13 +30,17 @@ router.post ('/', async (req, res) =>{
                 img,
                 platforms
             });
-            let genreDb = await Genre.findAll({
+            /* let genreDb = await Genre.findAll({
                 where: {
                     name : genre
                 },
+            }); */
+            const searchGenre = await Genre.findAll({
+                where: {name: genre},
             });
+            newVideogame.addGenre(searchGenre)
             
-            await newVideogame.addGenre(genreDb);
+            //await newVideogame.addGenre(searchGenre);
             res.status(200).send("Videogame created successfully")
 
           }else{
