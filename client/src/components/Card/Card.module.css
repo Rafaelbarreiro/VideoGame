@@ -1,7 +1,37 @@
+.container{
+    box-sizing: border-box;
+    background-color: rgba(10, 35, 54, 0.989);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    box-shadow: 5px 5px 5px rgb(31, 51, 181);
+    text-decoration: none;
+    height : 55vh
+
+
+
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
 .img{
-    width: 24vw;
-    height: 14vw;
+    width: 80%;
+    height: 80%;
 }
 .text{
-    color: black;
+    color: rgb(206, 199, 206);
+    text-align: none;
+    text-decoration: none;
+    font-size: 150%;
+    
 }
+.card{
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* .title{
+    
+        background-color: black;
+    
+} */

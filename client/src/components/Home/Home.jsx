@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames, getGenres,  orderByName, orderByRating, getPlatforms, fiteredPlatform, orderByGenre } from '../../actions/index';
+import { getVideogames, getGenres,  orderByName, orderByRating, getPlatforms, fiteredPlatform, orderByGenre, filterCreated } from '../../actions/index';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/pagination'
 import Loading from "../Loading/Loading";
@@ -55,6 +55,12 @@ function handleRating(e) {
     setCurrentPage(1);
     setOrder(`Ordenado ${e.target.value}`)
 }
+function handleDB(e){
+    e.preventDefault();
+    dispatch(filterCreated(e.target.value))
+    setCurrentPage(1);
+   
+}
 
 function handleByGenres(e){
     //e.preventDefault();
@@ -73,14 +79,16 @@ function handleByPlatform(e){
     
     return (
         <div >
-            <></>
-            <div className={s.nav}>
-            <NavBar  setCurrentPage={setCurrentPage}  />
-            <div/>
+            
+            <div className={s.container} >
             
             {allGames.length > 0 ? (
             <div className={s.bg}>
-                <div>
+           
+
+                
+                <div className={s.navBar}>
+                    <div className={s.filters}>
                 
             <select onChange={e => handleSort(e)}  className={s.selected}>
                       <option value='Alphabetical Order'> Order By Name</option>  
@@ -89,9 +97,15 @@ function handleByPlatform(e){
             </select>
 
             <select onChange={e => handleRating(e)}  className={s.selected}>
-                      <option value='Rating Order'> Order By Rating</option>  
+                      <option value='Rating Order' > Order By Rating</option>  
                     <option value='Menor'>  Highest Rating </option>
                     <option value='Mayor'>  Lowest Rating </option>
+            </select>
+
+            <select onChange={e => handleDB(e)} className={s.selected}>
+                <option value='All' > Storage </option>
+                <option value='db'> From DB </option>
+                <option value='API'> From API </option>
             </select>
             <select onChange={e => handleByGenres(e)} className={s.selected} >
                 <option value='All'> ALL GENRES </option>
@@ -108,12 +122,16 @@ function handleByPlatform(e){
                         ))
                         }
                 </select>
+                </div>
+                <div className={s.navDown}>
+                <NavBar  setCurrentPage={setCurrentPage} className={s.nav} />
         <Pagination
             gamesPerPage = {gamesPerPage}
             totalGames = {allGames.length}
             pagination={pagination}
             
         /> 
+        </div>
         </div>
 
         <div className={s.prueba}>
@@ -122,7 +140,7 @@ function handleByPlatform(e){
                 
             {CurrentGames.length > 0 ? CurrentGames?.map( e =>{
                return (
-                <li key={e.id}>
+                <li key={e.id} className={s.li}>
                <Card name={e.name}
                      img = {e.img}
                      rating = {e.rating}

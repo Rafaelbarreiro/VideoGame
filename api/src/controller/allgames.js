@@ -3,6 +3,8 @@ const {Videogame, Genre} = require ('../db')
 const {API_KEY} = process.env
 
 
+
+
 const getApiAll = async () =>{
     const firstHundred = [];
     for (let i = 1; i <= 5; i++) {
@@ -35,7 +37,7 @@ const getInfoDb = async () => {
         },
       },
     });
-    console.log(dbData, 'dbData')
+    //console.log(dbData, 'dbData')
     const mapInfoDb = dbData?.map(e => {
       return {
           id: e.id,

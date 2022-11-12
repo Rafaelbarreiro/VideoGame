@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchName/SearchName";
 import { getVideogames, clear} from '../../actions';
 import { useDispatch} from "react-redux";
-import s from "./Nav.modules.css"
+import s from "./Nav.module.css"
 
 export default function NavBar ({setCurrentPage}){
 
@@ -24,12 +24,12 @@ export default function NavBar ({setCurrentPage}){
     return (
         <div className={s.container}>
             <div>
-                <Link to='/home'>
-                      <button onClick ={(e)=> handleSubmit(e)}> RELOAD ALL GAMES </button>
+                <Link to='/home' >
+                      <button onClick ={(e)=> handleSubmit(e)} className={s.button}> RELOAD ALL GAMES </button>
                 </Link>
 
                 <Link to='/createGame'>
-            <button>CREATE NEW VIDEOGAME</button>
+            <button className={s.button}>CREATE NEW VIDEOGAME</button>
                  </Link>
             
                 <div><SearchBar  setCurrentPage={setCurrentPage} /></div>

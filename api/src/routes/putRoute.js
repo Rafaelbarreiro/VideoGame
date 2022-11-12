@@ -8,7 +8,7 @@ router.put ('/', async (req, res) => {
     const {id} = req.query;
     const {name, description, rating, released, platform} = req.body;
     //console.log(id) 
-
+ 
      try {
         let forUpdate = await Videogame.findByPk(id);
         console.log(forUpdate)

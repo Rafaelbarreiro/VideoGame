@@ -16,7 +16,7 @@ const allGenres = async () =>{
     const allGenres = await Genre.findAll();
     //console.log(allGenres)
     return allGenres;
-
+ 
 };
 
 module.exports = allGenres;

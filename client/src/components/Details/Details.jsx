@@ -24,36 +24,45 @@ console.log(myGame)
             dispatch(clear(gameId))
         };
     }, [dispatch, gameId]);
-
+console.log(myGame)
 
     const platformDetail = myGame.platforms?.join('  ')
-    const genreDetail = (myGame.genres?.join('  '))
 
+    let genreDetail = []
+    gameId.includes('-')? genreDetail = myGame.genres.map(e => e.name).join('  ') :
+
+    genreDetail = myGame.genres?.join('   ')
+   /*  const genero = myGame.genres.map(e => e.name)
+    console.log(genero, 'genero') */
+
+    
     return (
-        <div className={s.container}>
+        <div >
             {Object.keys(myGame).length > 0 && !loading ? 
-                <div className="s.container">
-                    <div>
-                        <Link to='/home'>
-                            <button> Home </button>
-                        </Link>
-                    </div>
-                    <div>
-                            <h1>{myGame.name}</h1>
-                        </div>
-                    <div style={{
-                        backgroundImage: `url(${myGame.img})`,
-                    }} className={s.containerImg}>
+                <div className={s.container}>
+                    <div className={s.left}>
+                        <h1>{myGame.name}</h1>
                         <div className={s.platform}>
                             <p className={s.platformLetter} >{platformDetail? platformDetail : "not Found"} </p>
                         </div>
-                    </div>
-                    <div className={s.details}>
-                            <p>{genreDetail} </p>
-                            <p>Rating: {myGame.rating} </p>
-                            <p>Launch: {myGame.released} </p>
+                        <div style={{
+                        backgroundImage: `url(${myGame.img})`,
+                    }} className={s.containerImg}>
                         </div>
-                    <p>{myGame.description} </p>
+                        <Link to='/home'>
+                            <button className={s.button}> Home </button>
+                        </Link>
+                        <div>
+                            <p>{genreDetail} </p>
+                        </div>
+                        <p>Rating: {myGame.rating} </p>
+                        <p>Launch: {myGame.released} </p>
+                    </div>
+
+                    <div className={s.rigth}>
+                        <p>{myGame.description} </p>
+                    </div>
+                    
                 </div>
 
              : !Object.keys(myGame).length > 0 && loading ? (

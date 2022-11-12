@@ -9,7 +9,8 @@ export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const ORDER_BY_GENRES = "ORDER_BY_GENRES";
 export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const FILTER_BY_PLATFORM = 'FILTER_BY_PLATFORM';
-export const POST_GAME = 'POST_GAME'
+export const POST_GAME = 'POST_GAME';
+export const CREATED = 'CREATED'
 
 export function getVideogames () {
     return async function (dispatch){
@@ -106,6 +107,12 @@ export function orderByGenre(payload){
         payload
     }
 };
+export function filterCreated(payload) {
+    return {
+        type: CREATED, 
+        payload
+    }
+}
 export function fiteredPlatform(payload){
     return{
         type: FILTER_BY_PLATFORM,

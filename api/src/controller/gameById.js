@@ -28,13 +28,18 @@ const gameById = async (id) => {
             where:{
               id:id,
             },
+           /*  through: {
+              attributes: [],
+            }, */
             include:{
               model: Genre,
-              attributes: ["name"]
+              through: {
+                attributes: [],
+              },
             }
         })
-        console.log(gameFound, 'gameFound')
-        const mapInfoDb = Array.from(gameFound)?.map(e => {
+        /* console.log(gameFound, 'gameFound')
+         const mapInfoDb = gameFound?.map(e => {
           return {
               id: e.id,
               name: e.name,
@@ -46,9 +51,9 @@ const gameById = async (id) => {
               platforms: e.platforms?.map((el) => el),
               createdInDb: e.createdInDb,
           };
-      });
-        
-        return (mapInfoDb)
+      }); 
+        console.log(mapInfoDb, 'mapInfoDb') */
+        return (gameFound)
     }
   };
 
