@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading";
 import s from './Details.module.css'
 
 
+
 export default function Details(props) {
     const [loading, setLoading] = useState(true);
 
@@ -53,6 +54,7 @@ export default function Details(props) {
                        
                         
                         <p className={s.description}>Rating: {myGame.rating} </p>
+                         
                         <p className={s.description}>Launch: {myGame.released} </p>
                     </div>
 

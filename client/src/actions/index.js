@@ -37,8 +37,9 @@ export function getVideogameByName (name){
             })
         } catch (error){
             console.log (error.message)
+            
         }
-        console.log(json)
+        
     };
     
 };

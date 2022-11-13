@@ -28,3 +28,33 @@
   font-weight: bold;
   font-size: x-large;
 }
+.error{
+  color:red;
+  margin:0;
+  font-size: small;
+}
+.error2{
+  color:red;
+  margin:0;
+  font-size: large;
+}
+.lista{
+  display: inline-flex;
+  font-weight: bold;
+}
+.buttonX {
+  border-radius: 0.7rem;
+  border: solid 1px #191630;
+  background-color: #6f5c7d;
+}
+.inputDescription {
+  padding: 1rem;
+  width: 70%;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 2px 2px 2px rgb(31, 51, 181);
+  background-color: #191630;
+  color: #42bcd5;
+  font-size: 16px;
+}

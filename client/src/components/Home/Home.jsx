@@ -7,7 +7,7 @@ import Pagination from '../Pagination/pagination'
 import Loading from "../Loading/Loading";
 import NavBar from '../NavBar/Nav';
 import s from "./Home.module.css"
-import Error404 from '../Error404';
+import Error404 from '../NotFound/Error404';
 //import SideBar from '../SideBar/SideBar';
 
 
@@ -15,6 +15,7 @@ import Error404 from '../Error404';
 export default function Home() {
 
 const dispatch = useDispatch();
+const todos = useSelector((state) => state.allVideogames)
 const allGames = useSelector((state) => state.videogames);  
 const platforms = useSelector((state) => state.platforms)
 const genre = useSelector((state) => state.genres) // eslint-disable-next-line
@@ -77,13 +78,13 @@ function handleByPlatform(e){
     setOrder(`${e.target.value}`)
 }
 
-    
+   
     return (
         <div >
             
             <div className={s.container} >
             
-            {allGames.length > 0 ? (
+            {todos.length > 0 ? (
             <div className={s.bg}>
            
 
@@ -142,14 +143,15 @@ function handleByPlatform(e){
             {CurrentGames.length > 0 ? CurrentGames?.map( e =>{
                return (
                 <li key={e.id} className={s.li}>
-                    {e.error ? <Error404/>:
+                    {(todos.length>0  && allGames.length>0) ? 
                <Card name={e.name}
                      img = {e.img}
                      rating = {e.rating}
                      genres = {e.genres}
-                     id = {e.id} />}
+                     id = {e.id} />
+                     : <Error404/>}
                 </li>
-           );} ) : <Loading/> }
+           );} ) : <Error404/>}
             </div>
             </div>
             </div>

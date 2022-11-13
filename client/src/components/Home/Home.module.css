@@ -1,13 +1,8 @@
 .cards{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 33% 33% 33%;
 }
-.bg {
-    background-color: rgba(19, 54, 80, 0.989);
-    background-size: cover;
-    /* height: 100vh;
-    width: 100vw; */
-  }
+
 /* .nav{
     background: rgba(10, 35, 54, 0.989);
     border-radius: 20px;

@@ -114,14 +114,14 @@ const initialState = {
               genres: action.payload,
              
           };
-      case ORDER_BY_GENRES:
-          const allVideogames = state.allVideogames
-          const FilteredGenre = action.payload === "All" ? allVideogames : 
-          allVideogames.filter( e => e.genres.includes (action.payload))
-          return {
-            ...state,
-            videogames : FilteredGenre
-          };
+          case ORDER_BY_GENRES:
+            const allVideogames = state.allVideogames
+            const FilteredGenre = action.payload === "All" ? allVideogames : 
+            allVideogames.filter( e => e.genres.includes (action.payload))
+            return {
+              ...state,
+              videogames : FilteredGenre
+            };
       case GET_PLATFORMS:
             return {
                 ...state,
@@ -132,10 +132,10 @@ const initialState = {
 
       case FILTER_BY_PLATFORM:
         const allVG = state.allVideogames
+
           allVG.map(e => console.log(e.platform))
         const filterByPlatform = action.payload === "All"? allVG : 
         allVG.filter(e => e.platform?.includes(action.payload) )
-       
         return {
           ...state,
           videogames: filterByPlatform

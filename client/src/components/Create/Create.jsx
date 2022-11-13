@@ -94,9 +94,6 @@ export default function  VideogameCreate(){
           );  
     }*/
     function handleSelectGenres(e) {
-        // let filt = input.genres.filter(e=> e === e.target.name)
-        // console.log(filt)
-    
         if (!input.genre.includes(e.target.value)) {
           setInput({
             ...input,
@@ -117,11 +114,34 @@ export default function  VideogameCreate(){
     function handleDeleteGenres(e){
         setInput({
             ...input,
-            genre: input.genre(el => el !==e )
+            genre: input.genre.filter(el => el !==e )
         })
     }  
-   
-    function handleCheckPlatform(e){
+    function handleSelectPlatforms(e) {
+      if (!input.platforms.includes(e.target.value)) {
+        setInput({
+          ...input,
+          platforms: [...input.platforms, e.target.value],
+        });
+        setError(
+          validate({
+            ...input,
+            platforms: [...input.platforms, e.target.value],
+          })
+        );
+      } else {
+        setInput({
+          ...input,
+        });
+      }
+    };
+    function handleDeletePlatforms(e){
+      setInput({
+          ...input,
+          platforms: input.platforms.filter(el => el !==e )
+      })
+  }  
+   /*  function handleCheckPlatform(e){
         if(e.target.checked){
             setInput({
                 ...input,
@@ -134,14 +154,14 @@ export default function  VideogameCreate(){
               platforms: [...input.platforms, e.target.value],
             })
           );
-    }
+    } */
     function handleSubmit(e){
         e.preventDefault();
         dispatch(postVideogames(input));
-        setError(validate({
+       /*  setError(validate({
             ...input,
             [e.target.name]: e.target.value
-        })) 
+        }))  */
         setInput({
             name: "",
             description:"",
@@ -154,9 +174,9 @@ export default function  VideogameCreate(){
 
         alert("Videogame created succesfully")
         history.push('/home')
-        window.location.reload('/home');
+        
     }
-  console.log(genres)
+  
    
     
 return(
@@ -174,7 +194,7 @@ return(
                 value= {input.name}
                 name= "name"
                 />
-                {error.name && <span >{error.name}</span>}
+                {error.name && <p className={s.error}>{error.name}</p>}
             </div>
 
             <div>
@@ -185,7 +205,7 @@ return(
                  value={input.released}
                  name="released"
                 />
-                {error.released && <span className={s.red}>{error.released}</span>}
+                {error.released && <p className={s.error}>{error.released}</p>}
              </div>
 
              <div>
@@ -197,7 +217,7 @@ return(
                  value={input.rating}
                  name="rating"
                 />
-                {error.rating && <span className={s.red}>{error.rating}</span>}
+                {error.rating && <p className={s.error}>{error.rating}</p>}
              </div>
 
              <div>
@@ -208,37 +228,22 @@ return(
                  value={input.img}
                  name="img"
                 />
-                {error.img && <span className={s.red}>{error.img}</span>}
+                {error.img && <p className={s.error}>{error.img}</p>}
              </div>
              <div>
             <p className={s.label}>Description*:</p>
             <textarea
+            className={s.inputDescription}
             onChange={handleChange}
               type="text"
               value={input.description}
               name="description"
             />
-            {error.description && <span className={s.red}>{error.description}</span>}
+            {error.description && <p className={s.error}>{error.description}</p>}
           </div>
              </div>
 
             <div className={s.select}> 
-          
-            
-             {/* <div id="itemForm">
-             {genres?.map((e) => {
-                return(
-                    <label key={e.id}><input
-                    onChange={handleCheckGenre}
-                    type="checkbox"
-                    name={e.name}
-                    value={e.name}
-                    />{e.name} </label>
-                )
-             })}
-             {error.genres && <span className={s.red}>{error.genres}</span>}
-             
-             </div> */}
              <div>
             <p className={s.label}>Genres</p>
             <select  className={s.thisInput} onChange={(e) => handleSelectGenres(e)}>
@@ -253,40 +258,54 @@ return(
             </select>
     
           </div>
-          <div className={s.selected}>
-            {input.genre?.map((e) => {
-              return (
-                <>
-                  <div>{e}</div>
-                  <button onClick={() => handleDeleteGenres(e)}>X</button>
-                </>
-              );
-            })}{" "}
+          <ul >
+              {input.genre.map((e) => (
+                <li key={e} className={s.lista}>
+                  <div >
+                    {e + " "}
+                    <button className={s.buttonX} type='button' onClick={() => handleDeleteGenres(e)}>
+                      X
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+          
+          <div>
+            <p className={s.label}>Platforms</p>
+            <select  className={s.thisInput} onChange={(e) => handleSelectPlatforms(e)}>
+              <option value="all">All</option>
+              {plataforma?.map((e) => {
+                return (
+                  <option key={e} value={e}>
+                    {e}
+                  </option>
+                );
+              })}
+            </select>
+            {error.platforms && <p className={s.error}>{error.platforms}</p>} 
           </div>
-             <div>
-            <h1 className={s.platformText}>Platform*:</h1>
-             {plataforma?.map((e) => {
-                return(
-                    <label key={e}><input
-                    onChange={handleCheckPlatform}
-                    type="checkbox"
-                    name={e}
-                    value={e}
-                    />{e} </label>
-                )
-             })}
-              {error.platforms && <span className={s.red}>{error.platforms}</span>} 
-              </div>
+          <ul >
+              {input.platforms.map((e) => (
+                <li key={e} className={s.lista}>
+                  <div >
+                    {e + " "}
+                    <button className={s.buttonX} type='button' onClick={() => handleDeletePlatforms(e)}>
+                      X
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            
              </div>
           {   (!error.name && !error.description && !error.platforms)?
            
-                <button id="submitButton" type='submit'  >Create Videogame</button> :
-                <h2>Missing some obligatories dates</h2>
+                <button  type='submit' onSubmit={e => handleSubmit(e)} >Create Videogame</button> :
+                <h2 className={s.error2}>Missing some obligatories dates</h2>
              
              }
-             
-
-             
         </form>
 
         </div>

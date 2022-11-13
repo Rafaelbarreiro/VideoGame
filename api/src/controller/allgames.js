@@ -3,7 +3,7 @@ const {Videogame, Genre} = require ('../db')
 const {API_KEY} = process.env
 
 
-
+  
 
 const getApiAll = async () =>{
     const firstHundred = [];
