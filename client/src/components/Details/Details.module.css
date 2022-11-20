@@ -63,5 +63,24 @@ margin-top: 20px;
     
 }
 .form{
-    border: solid black;
+    box-sizing: border-box;
+    background-color: rgba(10, 35, 54, 0.989);
+    margin: 5% 10% 5% 10%;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    box-shadow: 5px 5px 5px rgb(31, 51, 181);
+    text-decoration: none;
+    padding-left: 10%;
+    padding-right: 10%;
+} 
+.bg{
+    background-color: rgba(19, 54, 80, 0.989);
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }
+.label{
+    color: rgb(221, 218, 214);
+    font-weight: bold;
+  }

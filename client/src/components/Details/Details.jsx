@@ -92,8 +92,8 @@ function handleSubmit(e) {
                           
                         </Link>
                         {(myGame.createdInDb)?<>
-                        <button  onClick={e => handleDelete(e)}> Delete </button> 
-                        <div>
+                        <button  onClick={e => handleDelete(e)} className={s.button}> Delete </button> 
+                        <div className={s.bg}>
                             <form className={s.form}>
                             <div>
                                 <label className={s.label}>Released:</label>
@@ -127,7 +127,7 @@ function handleSubmit(e) {
                             </form>
                         </div>
                         <form onSubmit={handleSubmit}>
-                        <button type='submit' onSubmit={e => handleSubmit(e)}> Update </button>
+                        <button type='submit' onSubmit={e => handleSubmit(e)} className={s.button}> Update </button>
                         </form>
                         
                        
