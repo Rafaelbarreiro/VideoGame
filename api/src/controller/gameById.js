@@ -2,7 +2,7 @@ const axios = require ('axios')
 const {Videogame, Genre} = require ('../db')
 const {API_KEY} = process.env
 
-
+ 
 const gameById = async (id) => {
     if (!id.includes('-')){
     try {
@@ -48,8 +48,9 @@ const gameById = async (id) => {
           platforms: gameFound.platforms,
           img: gameFound.img,
           description: gameFound.description,
+          createdInDb: gameFound.createdInDb
         };
-        console.log(gameDetail)
+        //console.log(gameDetail)
        
         return (gameDetail)
     }

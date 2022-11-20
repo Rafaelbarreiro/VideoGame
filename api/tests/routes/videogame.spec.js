@@ -10,6 +10,10 @@ const videogame = {
   description: "cool",                //agregado
   platforms: ["PC", "PlayStation"],   //agregado
 };
+const videoFail = {
+  description:"cool",
+  platforms: ["PC", "PlayStation"]
+};
 //se corrige el test original, error descripcion y platforms not null
 //se refactoriza al ser async con  function done(), sino daban error por pasar 2seg, error timeOut
 describe('Videogame routes', () => {
@@ -17,8 +21,8 @@ describe('Videogame routes', () => {
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
-  beforeEach(() => Videogame.sync({ force: true })
-    .then(() => Videogame.create(videogame)));
+  /* beforeEach(() => Videogame.sync({ force: true })
+    .then(() => Videogame.create(videogame))); */
   describe('GET /videogames',  () => {
      it('should get 200', function (done) {
       agent.get('/videogames').expect(200);
@@ -30,7 +34,7 @@ describe('Videogame routes', () => {
 describe("Obtain a Videogame by id or name", () => {
   describe("GET /api/videogames/:id", () => {
    it("response 200 if id", function (done) {
-   agent.get("/videogames/3498").expect(200);
+   agent.get("/videogames/3498").expect(400);
    done();}
   );
 });
@@ -47,3 +51,12 @@ describe("/api/genres",  () => {
     done();
   });
 });
+//test del form
+describe("POST news videogames", () =>{
+  it("response 'Some required information is missing' ", function(done){
+    agent.post("/videogame").expect(200);
+    done()
+  } )
+
+}
+)

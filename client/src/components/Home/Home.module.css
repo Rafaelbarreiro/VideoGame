@@ -53,3 +53,10 @@
 .prueba{
 margin-top: 100px;
 }
+.error{
+    width: 100%;
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-content: center;
+}

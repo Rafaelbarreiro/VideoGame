@@ -9,7 +9,9 @@ import {
   GET_PLATFORMS,
   FILTER_BY_PLATFORM,
   POST_GAME,
-  CREATED
+  CREATED,
+  REMOVE_CREATED,
+  UPDATE
 } from '../actions/index';
 //import db_empty from '../img/Db_empty.jpg'
 
@@ -141,10 +143,22 @@ const initialState = {
           videogames: filterByPlatform
         };
 
-        case POST_GAME:
+      case POST_GAME:
              return{
                 ...state
             }
+        
+      case REMOVE_CREATED:
+              return {
+                ...state,
+                videogames: state.allVideogames.filter((game)=>game !== action.payload),
+               /*  videogames: state.allVideogames.filter((game)=>game !== action.payload) */
+              }
+      case UPDATE: 
+              return {
+                ...state
+              }
+      
 
         default:
       return state ;

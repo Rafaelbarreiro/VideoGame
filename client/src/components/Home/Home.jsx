@@ -77,7 +77,7 @@ function handleByPlatform(e){
     //setCurrentPage(1)
     setOrder(`${e.target.value}`)
 }
-
+//console.log(CurrentGames)
    
     return (
         <div >
@@ -127,13 +127,14 @@ function handleByPlatform(e){
                 </div>
                 <div className={s.navDown}>
                 <NavBar  setCurrentPage={setCurrentPage} className={s.nav} />
+                </div>
         <Pagination
             gamesPerPage = {gamesPerPage}
             totalGames = {allGames.length}
             pagination={pagination}
             
         /> 
-        </div>
+        
         </div>
 
         <div className={s.prueba}>
@@ -142,16 +143,21 @@ function handleByPlatform(e){
                 
             {CurrentGames.length > 0 ? CurrentGames?.map( e =>{
                return (
+                
                 <li key={e.id} className={s.li}>
-                    {(todos.length>0  && allGames.length>0) ? 
-               <Card name={e.name}
+                    {(todos.length>0  && allGames.length>0) ?
+                    
+               <Card className={s.card}
+                    name={e.name}
                      img = {e.img}
                      rating = {e.rating}
                      genres = {e.genres}
-                     id = {e.id} />
-                     : <Error404/>}
+                     id = {e.id} 
+                     created ={e.createdInDb} />
+                     
+                     : <Error404 className={s.error} />}
                 </li>
-           );} ) : <Error404/>}
+           );} ) : <Error404 className={s.error}/>}
             </div>
             </div>
             </div>

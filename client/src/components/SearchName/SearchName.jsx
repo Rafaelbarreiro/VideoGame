@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { clear, getVideogameByName} from '../../actions'
+import { getVideogameByName} from '../../actions'
 
 export default function SearchBar({setCurrentPage}){
 
@@ -21,7 +21,7 @@ export default function SearchBar({setCurrentPage}){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(getVideogameByName(name));
-        dispatch(clear());
+        //dispatch(clear());
         setName("");
     }
     

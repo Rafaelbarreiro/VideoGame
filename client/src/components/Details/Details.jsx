@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, clear } from '../../actions/index'
+import { getDetail, clear, removeCreated, updateVideogame} from '../../actions/index'
 import Loading from "../Loading/Loading";
 import s from './Details.module.css'
+import image from '../../img/new.jpg'
 
 
 
 export default function Details(props) {
     const [loading, setLoading] = useState(true);
-
+    const history = useHistory()
     const dispatch = useDispatch();
     const myGame = useSelector((state) => state.videogameDetail);
     let gameId = props.match.params.id;
+    
+    const [input, setInput] = useState({
+        description:"",
+        released:"",
+        rating:"",
+        img:"",
+        platforms:[],
+        genre:[]
+    })
+  
 
     if(Object.keys(myGame).length > 0 && loading){
         setLoading(false);
@@ -28,15 +39,29 @@ export default function Details(props) {
 
 
     const platformDetail = myGame.platforms?.join('  ')
-
     let genreDetail = []
-   /*  console.log(myGame)
-    console.log(myGame.genres.map(e => e.name).join('  '))
-    myGame.id.includes('-')? genreDetail = myGame.genres.map(e => e.name).join('  ') : */
-
     genreDetail = myGame.genres?.join('   ') 
-   /*  const genero = myGame.genres.map(e => e.name)
-    console.log(genero, 'genero') */
+  
+function handleDelete(e){
+    e.preventDefault ();
+    dispatch(removeCreated(gameId));
+    alert("Videogame has remove succesfully")
+    history.push('/home')
+}
+function handleChange(e){
+    setInput({
+        ...input,
+        [e.target.name]: e.target.value
+    })
+}
+function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(updateVideogame(gameId , input));
+    dispatch(getDetail(gameId))
+    alert ('VideoGame updated succesfully')
+//console.log(gameId, input)
+
+}
 
     
     return (
@@ -47,8 +72,9 @@ export default function Details(props) {
                         <h1>{myGame.name}</h1>
                         <div className={s.platform}>
                             <p className={s.platformLetter} >{platformDetail? platformDetail : "not Found"} </p> 
-                            <img src={myGame.img} alt="img not found" className={s.image} />
+                            <img src= {image} alt="img not found" className={s.image} />
                             <p className={s.platformLetter}>{genreDetail} </p>
+                           
                         </div>
                         
                        
@@ -60,10 +86,53 @@ export default function Details(props) {
 
                     <div className={s.rigth}>
                        <p className={s.description}>Description: </p> 
-                        <p>{myGame.description} </p>
+                        <p className={s.description}>{myGame.description} </p>
                         <Link to='/home'>
                             <button className={s.button}> Home </button>
+                          
                         </Link>
+                        {(myGame.createdInDb)?<>
+                        <button  onClick={e => handleDelete(e)}> Delete </button> 
+                        <div>
+                            <form className={s.form}>
+                            <div>
+                                <label className={s.label}>Released:</label>
+                                <input className={s.inputDate}
+                                onChange={handleChange}
+                                type="date"
+                                 value={input.released}
+                                name="released"
+                            />
+                            </div>
+                            <div>
+                                <label className={s.label}>Rating:</label>
+                                <input className={s.input}
+                                onChange={handleChange}
+                                type="float"
+                                value={input.rating}
+                                name="rating"
+                            />
+                             </div>
+                             <div>
+                             <p className={s.label}>Description:</p>
+                            <textarea
+                            className={s.inputDescription}
+                            onChange={handleChange}
+                            type="text"
+                            value={input.description}
+                            name="description"
+                            />
+                            </div>
+
+                            </form>
+                        </div>
+                        <form onSubmit={handleSubmit}>
+                        <button type='submit' onSubmit={e => handleSubmit(e)}> Update </button>
+                        </form>
+                        
+                       
+                        </>
+                        : <></> }
                     </div>
                     
                 </div>

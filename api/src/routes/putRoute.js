@@ -4,8 +4,8 @@ const { Genre, Videogame } = require("../db");
 const router = express.Router();
 const { Sequelize, Op } = require('sequelize');
 
-router.put ('/', async (req, res) => {
-    const {id} = req.query;
+router.put ('/:id', async (req, res) => {
+    const {id} = req.params;
     const {name, description, rating, released, platform} = req.body;
     //console.log(id) 
  
@@ -13,11 +13,10 @@ router.put ('/', async (req, res) => {
         let forUpdate = await Videogame.findByPk(id);
         console.log(forUpdate)
         await forUpdate.update({
-            name,
             description,
             rating,
             released,
-            platform
+            //platform
         });
         /* let genDb= await Genre.findAll({
             where:{

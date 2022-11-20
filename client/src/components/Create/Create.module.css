@@ -8,11 +8,13 @@
 .container{
   box-sizing: border-box;
   background-color: rgba(10, 35, 54, 0.989);
-  margin: 5% 15% 5% 15%;
+  margin: 5% 10% 5% 10%;
   border-radius: 20px;
   border: 2px solid #fff;
   box-shadow: 5px 5px 5px rgb(31, 51, 181);
   text-decoration: none;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 .label{
   color: rgb(221, 218, 214);
@@ -49,12 +51,35 @@
 }
 .inputDescription {
   padding: 1rem;
-  width: 70%;
+  height: 50px;
+  width: 90%;
   font-weight: bold;
   border-radius: 10px;
   border: 2px solid #fff;
   box-shadow: 2px 2px 2px rgb(31, 51, 181);
   background-color: #191630;
   color: #42bcd5;
-  font-size: 16px;
+  font-size: 12px;
+ 
+}
+.input{
+  width: 76%;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 2px 2px 2px rgb(31, 51, 181);
+  background-color: #191630;
+  color: #42bcd5;
+  font-size: 12px;
+}
+.inputDate{
+  height: 20px;
+  width: 76%;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 2px 2px 2px rgb(31, 51, 181);
+  background-color: #191630;
+  color: white;
+  font-size: 12px;
 }

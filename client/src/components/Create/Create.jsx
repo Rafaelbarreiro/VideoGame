@@ -199,7 +199,7 @@ return(
 
             <div>
                 <label className={s.label}>Released:</label>
-                 <input
+                 <input className={s.inputDate}
                  onChange={handleChange}
                  type="date"
                  value={input.released}
@@ -210,7 +210,7 @@ return(
 
              <div>
                 <label className={s.label}>Rating:</label>
-                 <input
+                 <input className={s.input}
                  onChange={handleChange}
                  
                  type="float"
@@ -222,7 +222,7 @@ return(
 
              <div>
                 <label className={s.label}>Imagen:</label>
-                 <input
+                 <input className={s.input}
                  onChange={handleChange}
                  type="text"
                  value={input.img}

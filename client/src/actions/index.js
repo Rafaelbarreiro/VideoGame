@@ -10,7 +10,10 @@ export const ORDER_BY_GENRES = "ORDER_BY_GENRES";
 export const GET_PLATFORMS = 'GET_PLATFORMS';
 export const FILTER_BY_PLATFORM = 'FILTER_BY_PLATFORM';
 export const POST_GAME = 'POST_GAME';
-export const CREATED = 'CREATED'
+export const CREATED = 'CREATED';
+export const REMOVE_CREATED = 'REMOVE_CREATED';
+export const UPDATE = "UPDATE"
+
 
 export function getVideogames () {
     return async function (dispatch){
@@ -36,7 +39,9 @@ export function getVideogameByName (name){
                
             })
         } catch (error){
+
             console.log (error.message)
+            return alert('Sorry, game not found, try again.')
             
         }
         
@@ -129,5 +134,31 @@ export function postVideogames(payload) {
        } catch (error) {
         console.log(error.message)
        }
+    }
+};
+export function removeCreated(id) {
+    return async function (dispatch) {
+        try{
+            await axios.delete(`http://localhost:3001/videogames/${id}`);
+            
+            return dispatch ({
+                type: REMOVE_CREATED,
+                payload: id
+            })
+        }catch (error) {
+            console.log(error.message)
+           }
+    }
+
+  };
+export function updateVideogame(id, payload) {
+    return async function (dispatch){
+        await axios.put (`http://localhost:3001/videogames/${id}`, payload);
+        console.log(id, payload)
+        return dispatch({
+            type: UPDATE,
+            payload: payload
+
+        })
     }
 }

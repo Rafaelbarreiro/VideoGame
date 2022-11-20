@@ -58,6 +58,10 @@ margin-top: 20px;
 }
 .description{
     font-weight: bold;
-    font-size: x-large;
+    font-size: large;
+    color:  rgb(206, 199, 206);;
     
+}
+.form{
+    border: solid black;
 }
