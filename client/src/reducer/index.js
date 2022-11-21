@@ -103,12 +103,12 @@ const initialState = {
         const filtered = action.payload === 'db' ?
           allGames.filter(e => e.createdInDb):
           allGames.filter(e => !e.createdInDb)
-          const notFoundDb = [{id:1, name: "Don't exists Videogames created", img:"https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_1280.jpg", rating:0.0}]
-          const checkDb = filtered.length !== 0 ? filtered : notFoundDb
+          //const notFoundDb = [{id:1, name: "Don't exists Videogames created", img:"https://cdn.pixabay.com/photo/2017/06/08/17/32/not-found-2384304_1280.jpg", rating:0.0}]
+          //const checkDb = filtered.length !== 0 ? filtered : notFoundDb
 
           return{
             ...state,
-            videogames: action.payload === "All" ? state.allVideogames : checkDb
+            videogames: action.payload === "All" ? state.allVideogames : filtered
           };
       case GET_GENRES:
           return {

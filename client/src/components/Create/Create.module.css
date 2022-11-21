@@ -43,6 +43,7 @@
 .lista{
   display: inline-flex;
   font-weight: bold;
+  color: white;
 }
 .buttonX {
   border-radius: 0.7rem;

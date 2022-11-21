@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetail, clear, removeCreated, updateVideogame} from '../../actions/index'
 import Loading from "../Loading/Loading";
 import s from './Details.module.css'
-import image from '../../img/new.jpg'
+//import image from '../../img/new.jpg'
 
 
 
@@ -57,8 +57,9 @@ function handleChange(e){
 function handleSubmit(e) {
     e.preventDefault();
     dispatch(updateVideogame(gameId , input));
-    dispatch(getDetail(gameId))
+   
     alert ('VideoGame updated succesfully')
+    dispatch(getDetail(gameId))
 //console.log(gameId, input)
 
 }
@@ -72,7 +73,7 @@ function handleSubmit(e) {
                         <h1>{myGame.name}</h1>
                         <div className={s.platform}>
                             <p className={s.platformLetter} >{platformDetail? platformDetail : "not Found"} </p> 
-                            <img src= {image} alt="img not found" className={s.image} />
+                            <img src= {myGame.img} alt="img not found" className={s.image} />
                             <p className={s.platformLetter}>{genreDetail} </p>
                            
                         </div>

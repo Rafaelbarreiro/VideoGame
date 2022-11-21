@@ -14,6 +14,8 @@
     background: #FBCA1F;
     font-family: inherit;
     padding: 0.1em 1em;
+    padding-left: 2vw;
+    padding-right: 2vw;
     font-weight: 900;
     font-size: 1.2rem;
     border: 3px solid black;
